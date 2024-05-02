@@ -4,9 +4,9 @@ import "./styles.css";
 
 function App() {
   const [songInfo, setSongInfo] = useState({
-    song: "",
-    artist: "",
-    album_art_url: "",
+    song: "N/A",
+    artist: "N/A",
+    album_art_url: "https://placehold.co/400",
   });
 
   useEffect(() => {
