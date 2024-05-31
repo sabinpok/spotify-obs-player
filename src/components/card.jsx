@@ -9,17 +9,6 @@ export default function Card({ songInfo }) {
           <h1>{songInfo["song"]}</h1>
           <p>{songInfo["artist"].replaceAll(";", ", ")}</p>
           <p>{songInfo["album"]}</p>
-          <div className="controlls">
-            <a href="">
-              <i className="fa fa-backward" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i className="fa fa-pause" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i className="fa fa-forward" aria-hidden="true"></i>
-            </a>
-          </div>
         </div>
       </div>
     </>
