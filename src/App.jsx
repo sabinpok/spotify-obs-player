@@ -27,8 +27,11 @@ function App() {
   };
 
   useEffect(() => {
+    let interval = null; // Declare the interval variable outside the if statement
+
     if (userInfo) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
+        console.log(userInfo);
         services
           .getInfo(userInfo)
           .then((result) => {
@@ -42,7 +45,7 @@ function App() {
             }
           })
           .catch((error) => {
-            console.error(error);
+            console.log("Error: ", error);
             setSongInfo({
               song: "N/A",
               artist: "N/A",
@@ -50,20 +53,21 @@ function App() {
               album_art_url: "https://placehold.co/400",
             });
           });
-        return () => clearInterval(interval);
       }, 5000);
     }
+
+    return () => clearInterval(interval); // Return the cleanup function from the useEffect callback
   }, [userInfo]);
 
   return (
     <>
+      <Card songInfo={songInfo} />
+      <Description />
       <Form
         handleUserInfoSubmit={handleUserInfoSubmit}
         newUserInfo={newUserInfo}
         handleUserInfoChange={handleUserInfoChange}
       />
-      <Card songInfo={songInfo} />
-      <Description />
     </>
   );
 }
